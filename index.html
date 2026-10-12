@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MedGuia | Saúde e informação</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f8f6;color:#203b32}
+header{background:#145747;color:white;padding:22px;text-align:center}
+header h1{margin:0}
+header p{margin-bottom:0}
+main{max-width:800px;margin:28px auto;padding:0 16px}
+input{width:100%;padding:14px;border:1px solid #cbdad1;border-radius:10px;font-size:16px}
+h2{color:#145747}
+.card{background:white;padding:20px;margin:15px 0;border-radius:14px;border:1px solid #e0eae3}
+.card h3{margin-top:0}
+.tag{color:#26745a;font-size:12px;font-weight:bold}
+button{background:#145747;color:white;border:0;border-radius:8px;padding:12px;cursor:pointer}
+.notice{background:#fff5df;padding:16px;border-radius:10px}
+footer{text-align:center;padding:25px;background:#145747;color:white}
+a{color:#145747}
+</style>
+</head>
+<body>
+<header>
+<h1>💚 MedGuia</h1>
+<p>Informação para cuidar melhor</p>
+</header>
+<main>
+<h2>Conheça os medicamentos</h2>
+<p>Informações educativas sobre usos, benefícios e cuidados com medicamentos.</p>
+<input id="busca" placeholder="Pesquisar medicamento..." oninput="pesquisar()">
+
+<div id="lista">
+<article class="card">
+<span class="tag">DOR E FEBRE</span>
+<h3>Paracetamol</h3>
+<p>É utilizado para aliviar dores e reduzir a febre. O excesso pode causar danos graves ao fígado.</p>
+</article>
+<article class="card">
+<span class="tag">DOR E INFLAMAÇÃO</span>
+<h3>Ibuprofeno</h3>
+<p>É um anti-inflamatório. Pode causar problemas no estômago e nos rins e não é adequado para todas as pessoas.</p>
+</article>
+<article class="card">
+<span class="tag">ALERGIAS</span>
+<h3>Antialérgicos</h3>
+<p>Alguns ajudam a aliviar sintomas alérgicos e podem causar sonolência.</p>
+</article>
+<article class="card">
+<span class="tag">INFECÇÕES</span>
+<h3>Antibióticos</h3>
+<p>Tratam determinadas infecções bacterianas. Não funcionam contra vírus e exigem uso adequado.</p>
+</article>
+</div>
+
+<p id="vazio" hidden>Nenhum resultado encontrado.</p>
+
+<div class="notice">
+<strong>⚠️ Aviso importante</strong>
+<p>Este site oferece informações educativas e não substitui a avaliação de um médico ou farmacêutico. Consulte a bula oficial antes de usar medicamentos.</p>
+</div>
+
+<h2>Fontes confiáveis</h2>
+<p><a href="https://www.gov.br/anvisa/pt-br/sistemas/bulario-eletronico" target="_blank">Consultar bulas na Anvisa ↗</a></p>
+</main>
+<footer>
+<strong>MedGuia 💚</strong>
+<p>Informação responsável sobre saúde.</p>
+</footer>
+<script>
+function pesquisar(){
+const q=document.getElementById('busca').value.toLocaleLowerCase('pt-BR');
+let n=0;
+document.querySelectorAll('#lista .card').forEach(c=>{
+c.hidden=!c.innerText.toLocaleLowerCase('pt-BR').includes(q);
+if(!c.hidden)n++;
+});
+document.getElementById('vazio').hidden=n>0;
+}
+</script>
+</body>
+</html>
